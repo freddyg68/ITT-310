@@ -1,5 +1,3 @@
-# ITT-310
-Application
 /*
 This app will utilize the stdio, stdlib, and time header files in order to properly function.
 The standard library header file is included so that rand/srand can be used
@@ -8,6 +6,7 @@ The time.h header file is included so that the time() function can be used
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
 
 /* Create a function that chooses a random number to point to a stored answer within the array
 * This function takes an int variable, and then computes a random number between 0-10 using the srand and rand functions, and returns the random value generated
@@ -25,9 +24,22 @@ int randomNumber(answerNumber)
 
 
 
+
 // Begin main() function, which returns 0
 int main()
 {
+	// define structure to store data about program users (helpful if program is expanded to multiple users with unique profiles)
+	typedef struct currentUser
+	{
+		int accountNumber;
+		char* userName;
+	} user;
+
+	user data;
+
+	// store user data in userData structure (currently one user)
+	data.accountNumber = 1;
+	data.userName = "Optimus Prime";
 
 	// Define variable for collecting user input
 
@@ -45,9 +57,8 @@ int main()
 
 
 	// prompt user for a question, user's question is inconsequential as response is chosen at random
-
-	printf("Ask your question...but beware the answer! ");
-	scanf_s("char*", &inquiry);
+		printf("Ask your question...but beware the answer! ");
+	scanf_s( &inquiry);
 
 	// generate random number between 0 and 9 using the user defined random number function
 	
@@ -56,6 +67,8 @@ int main()
 	// Output one of the stored answers from the array based on the random number that was generated through the random number function
 
 	printf(answers[chosenAnswer]);
+	
+	// create variables to log total number of questions asked as well as answers given
 
 	
 	// terminate program by returning 0 to end the main() function
